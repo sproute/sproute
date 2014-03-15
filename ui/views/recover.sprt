@@ -1,0 +1,23 @@
+{{ if session.user }}
+	{{ redirect /admin/ }}
+{{ / }}
+
+<!DOCTYPE html>
+<html>
+<head>
+{{ asset /admin/assets/styles/dashboard.css }}
+<title>{{self.name}} – Sproute Dashboard</title>
+</head>
+<body>
+
+<div id="login">
+<h2>New password for {{self.name}}</h2>
+<p>Here is your new password. Make sure to change it to something more memorable in the Dashboard.</p>
+
+<p><var>{{newpass}}</var></p>
+
+<p><a href="/admin/login">Login</a></p>
+</div>
+
+</body>
+</html>

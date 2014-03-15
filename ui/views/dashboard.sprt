@@ -1,0 +1,67 @@
+{{ unless session.user }}
+	{{ redirect /admin/login }}
+{{ / }}
+
+{{ if session.user.role neq admin }}
+	{{ redirect /api/logout?goto=/admin/login }}
+{{ / }}
+
+<!DOCTYPE html>
+<html>
+<head>
+{{ asset /admin/assets/styles/dashboard.css }}
+{{ asset /admin/assets/styles/forms.css }}
+<title>{{self.name}} &mdash; Sproute Dashboard</title>
+</head>
+<body>
+
+<div class="top">
+	<a href="/admin"><span class="space-name">{{self.name}}</span></a>
+	
+	(<a href="http://{{self.name}}.sproute.io" target="_blank">View Space</a>)
+
+
+	<div class="details">
+		Logged in as <strong>{{session.user.name}}</strong>
+		<a href="/api/logout?goto=/">Logout</a>
+	</div>
+</div>
+
+<ul class="nav">
+	<li><a href="#page" class="page">Pages</a></li>
+	<li><a href="#model" class="model">Models</a></li>
+	<li><a href="#route" class="route">Routes</a></li>
+	<li><a href="#permissions" class="permissions">Permissions</a></li>
+	<li><a href="#config" class="config">Settings</a></li>
+</ul>
+<div id="error"></div>
+<div id="page">
+<div class="intro">
+<h2>Welcome to your dashboard!</h2>
+<p>To get started watch the introduction video for building your space:</p>
+
+<p><iframe style="border: 1px solid #aaa" width="800" height="480" src="//www.youtube.com/embed/OhNDrxdu7YY?rel=0&vq=hd1080" frameborder="0" allowfullscreen></iframe></p>
+</div>
+</div>
+
+{{ asset /admin/assets/vendor/jquery.js }}
+{{ asset /admin/assets/vendor/Spineless.js }}
+
+{{ asset /admin/assets/src/index.min.js }}
+{{ asset /admin/assets/src/Error.min.js }}
+{{ asset /admin/assets/src/Page.min.js }}
+{{ asset /admin/assets/src/Model.min.js }}
+{{ asset /admin/assets/src/Route.min.js }}
+{{ asset /admin/assets/src/Config.min.js }}
+{{ asset /admin/assets/src/Permission.min.js }}
+
+<script src="/admin/assets/vendor/cm/codemirror.js"></script>
+<script src="/admin/assets/vendor/cm/overlay.js"></script>
+<script src="/admin/assets/vendor/cm/modes/htmlmixed.js"></script>
+<script src="/admin/assets/vendor/cm/modes/css.js"></script>
+<script src="/admin/assets/vendor/cm/modes/javascript.js"></script>
+<script src="/admin/assets/vendor/cm/modes/xml.js"></script>
+<link href="/admin/assets/vendor/cm/codemirror.css" rel="stylesheet" />
+<link href="/admin/assets/vendor/cm/cobalt.css" rel="stylesheet" />
+</body>
+</html>
