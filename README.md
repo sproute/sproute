@@ -2,7 +2,7 @@
 
 ## Installation Guide
 
-**1. Clone the repo in your project**
+**1. Clone the repo in your project folder**
 
 Make sure the directory is named `sproute` and exists in your project directory.
 
@@ -27,18 +27,18 @@ or in Windows run `windows/install.bat`
 
 Inside the project directory:
 
-	D models/
-	D views/
-	  controller.js
-	  config.js
-	  permissions.js
+	D  models/
+	D  views/
+	   controller.js
+	   config.js
+	   permissions.js
 
 or use the command-line tool to generate them:
 
 	cd /path/to/project
 	sproute init
 
-**4. Run the server with either**
+**4. Run the server**
 	
 	cd /path/to/project
 	sproute serve
