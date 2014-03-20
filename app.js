@@ -185,13 +185,6 @@ App.prototype = {
 			server = express();
 		}
 
-		// free accounts will have a rate limiting timeout
-		if (!this.config.type || this.config.type == "free") {
-			server.use(function (req, res, next) {
-				setTimeout(next, 150);
-			}.bind(this));
-		}
-
 		// gracefully handle many requests
 		if (this.config.strict) {
 			toobusy.maxLag(500);
